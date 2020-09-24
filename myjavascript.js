@@ -1,8 +1,8 @@
 "use strict";
 
 const arr = [];
-const arr2 = [];
-const arr3 = [];
+const arrNumbers = [];
+const arrNegative = [];
 
 let answer;
 let average;
@@ -23,28 +23,28 @@ for ( let i = 0; i < arr.length; i ++) {
   const value = arr[i];
 
   if (!isNaN(value)) {
-    arr2.push(value);
-    arr2.sort(function(a, b) {return a - b})
+    arrNumbers.push(value);
+    arrNumbers.sort(function(a, b) {return a - b})
   }
   if (!isNaN(value) && value < 0 ) {
-    arr3.push(value);
-    negative = arr3.length;
+    arrNegative.push(value);
+    negative = arrNegative.length;
   }
   else negative = 0;
   
 }
 
-let amountOfEvenNumbersGreaterThanZero = arr2.filter(number => number > 0 && !(number % 2)).length;
+let amountOfEvenNumbersGreaterThanZero = arrNumbers.filter(number => number > 0 && !(number % 2)).length;
 
-average = arr2.reduce((accumulator, current) => {
+average = arrNumbers.reduce((accumulator, current) => {
   if (Number.isInteger(+current)) {
     return accumulator + +current
   }
 
   return accumulator;
-}, 0) / arr2.length;
+}, 0) / arrNumbers.length;
 
-let fractionSumm = arr2.reduce((accumulator, current) => {
+let fractionSumm = arrNumbers.reduce((accumulator, current) => {
   if (isFloat(current)) {
     return accumulator + +current;
   }
@@ -56,9 +56,9 @@ let object = {
 
   elements: arr.length,
 
-  minInteger: arr2[0],
+  minInteger: arrNumbers[0],
 
-  maxInteger: arr2[arr2.length - 1],
+  maxInteger: arrNumbers[arrNumbers.length - 1],
 
   arithmeticMean: average,
 
