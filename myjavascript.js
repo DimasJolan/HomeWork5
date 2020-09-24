@@ -6,16 +6,16 @@ const arr2 = [];
 const arr3 = [];
 const arr4 = [];
 const result = 0;
+
 let min;
 let answer;
+let trimAnswer;
 let average;
 let average2;
 let negative;
-
-
 while(answer !== null){
-  answer = prompt("Вводите значения до тех пор, пока не захотите узнать результаты в консоли. Для этого нажмите cancel")
-  if (answer !== null && answer !== "" && isFinite(answer)){
+  answer = prompt("Вводите значения до тех пор, пока не захотите узнать результаты в консоли. Для этого нажмите cancel");
+  if  (answer !== null && isFinite(answer)){
     arr.push(answer);
   }
 }
@@ -28,18 +28,19 @@ function isFloat (num) {
 for ( let i = 0; i < arr.length; i ++) {
   const value = arr[i];
 
-  if (!isNaN(value)) {
-    arr2.push(value);
+  if (!isNaN(value) && value !== "") {
+    arr2.push(value.trim());
     arr2.sort(function(a, b) {return a - b})
   }
-
-  if (!isNaN(value) && value < 0) {
+  if (!isNaN(value) && value < 0 ) {
     arr3.push(value);
     negative = arr3.length;
   }
+  if (!isNaN(value) && Number.isInteger(+value)){
+    arr4.push(value);
+  }
 }
 
-// количество четных положительных чисел
 let amountOfEvenNumbersGreaterThanZero = arr2.filter(number => number > 0 && !(number % 2)).length;
 
 average = arr2.reduce((accumulator, current) => {
@@ -62,9 +63,9 @@ let object = {
 
   elements: arr.length,
 
-  minInteger: arr2[0],
+  minInteger: arr4[0],
 
-  maxInteger: arr2[arr2.length - 1],
+  maxInteger: arr4[arr4.length - 1],
 
   arithmeticMean: average,
 
