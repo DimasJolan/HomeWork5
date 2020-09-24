@@ -1,20 +1,17 @@
-
 "use strict";
 
 const arr = [];
 const arr2 = [];
 const arr3 = [];
-const arr4 = [];
 
 let answer;
 let average;
-let average2;
 let negative;
-while(answer !== null){
-  answer = prompt("Вводите значения до тех пор, пока не захотите узнать результаты в консоли. Для этого нажмите cancel");
-  if  (answer !== null && isFinite(answer)) {
-    arr.push(answer);
-  }
+
+while (true) {
+  answer = (prompt("Вводите значения до тех пор, пока не захотите узнать результаты в консоли. Для этого нажмите cancel. Если Вы введете пустую строку , то код автоматически буде остановлен.") || "").trim();
+  if (answer === null || answer === " " || answer === "") break;
+  arr.push(answer);
 }
 
 function isFloat (num) {
@@ -33,9 +30,8 @@ for ( let i = 0; i < arr.length; i ++) {
     arr3.push(value);
     negative = arr3.length;
   }
-  if (!isNaN(value)){
-    arr4.push(value);
-  }
+  else negative = 0;
+  
 }
 
 let amountOfEvenNumbersGreaterThanZero = arr2.filter(number => number > 0 && !(number % 2)).length;
@@ -60,9 +56,9 @@ let object = {
 
   elements: arr.length,
 
-  minInteger: arr4[0],
+  minInteger: arr2[0],
 
-  maxInteger: arr4[arr4.length - 1],
+  maxInteger: arr2[arr2.length - 1],
 
   arithmeticMean: average,
 
