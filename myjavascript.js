@@ -5,17 +5,14 @@ const arr = [];
 const arr2 = [];
 const arr3 = [];
 const arr4 = [];
-const result = 0;
 
-let min;
 let answer;
-let trimAnswer;
 let average;
 let average2;
 let negative;
 while(answer !== null){
   answer = prompt("Вводите значения до тех пор, пока не захотите узнать результаты в консоли. Для этого нажмите cancel");
-  if  (answer !== null && isFinite(answer)){
+  if  (answer !== null && isFinite(answer)) {
     arr.push(answer);
   }
 }
@@ -28,15 +25,15 @@ function isFloat (num) {
 for ( let i = 0; i < arr.length; i ++) {
   const value = arr[i];
 
-  if (!isNaN(value) && value !== "") {
-    arr2.push(value.trim());
+  if (!isNaN(value)) {
+    arr2.push(value);
     arr2.sort(function(a, b) {return a - b})
   }
   if (!isNaN(value) && value < 0 ) {
     arr3.push(value);
     negative = arr3.length;
   }
-  if (!isNaN(value) && Number.isInteger(+value)){
+  if (!isNaN(value)){
     arr4.push(value);
   }
 }
